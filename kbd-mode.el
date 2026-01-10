@@ -177,15 +177,18 @@ form `@MACRO-NAME' with `kbd-mode-variable-name-face'."
 
 (defvar kbd-mode-syntax-table
   (let ((st (make-syntax-table)))
+    (modify-syntax-entry ?@  "'"     st)
+    (modify-syntax-entry ?\[ "w"     st)
+    (modify-syntax-entry ?\] "w"     st)
+    (modify-syntax-entry ?\\ "w"     st)
+    (modify-syntax-entry ?'  "w"     st)
+    (modify-syntax-entry ?`  "w"     st)
+    (modify-syntax-entry ?,  "w"     st)
     ;; Use ;; for regular comments and #| |# for line comments.
-    (modify-syntax-entry ?\; ". 12b" st)
+    (modify-syntax-entry ?\; "w 12b" st)
     (modify-syntax-entry ?\n "> b"   st)
     (modify-syntax-entry ?\# ". 14"  st)
     (modify-syntax-entry ?\| ". 23"  st)
-    ;; We don't need to highlight brackets, as they're only used inside
-    ;; layouts.
-    (modify-syntax-entry ?\[ "."     st)
-    (modify-syntax-entry ?\] "."     st)
     ;; We highlight the necessary strings ourselves.
     (modify-syntax-entry ?\" "."     st)
     st)
