@@ -241,7 +241,10 @@ For details, see `https://github.com/kmonad/kmonad'."
   (set-syntax-table kbd-mode-syntax-table)
   (use-local-map kbd-mode-map)
   (font-lock-add-keywords 'kbd-mode kbd-mode--font-lock-keywords)
-  (kbd-mode--show-macros-p kbd-mode-show-macros))
+  (kbd-mode--show-macros-p kbd-mode-show-macros)
+  (put 'deflayer 'lisp-indent-function 1)
+  (put 'defsrc   'lisp-indent-function 'defun)
+  (put 'defcfg   'lisp-indent-function 0))
 
 ;; HACK
 ;;
